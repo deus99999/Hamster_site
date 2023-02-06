@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{% static 'img/favicon.png' %}" rel="shortcut icon" type="image/x-icon"/>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+	<title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+{% block header %}
+    {% include './block/header.html' %}
+{% endblock %}
+{% include './block/navbar.html' %}
+
+
+   <!--  <div>
+			<div id="menuHrefs">
+    			<ul>
+	    			<li><a href="">Виды домашних хомяков</a></li>
+    				<li><a href="">Особенности содержания и ухода</a></li>
+    			</ul>
+            </div>
+    </div> -->
+	{% block content %}{% endblock content %}
+    {% block pagination %}{% endblock %}
+    {% include './block/footer.html' %}
+</body>
+</html>

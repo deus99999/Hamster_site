@@ -1,0 +1,21 @@
+{% load static %}
+<div id="page-wrap">
+		<header>
+			<div class="left">
+			    <a class="left" href="{% url 'index' %}" title="На главную" id="logo"><img src="{% static 'img/main.png' %}"></a>
+			    <form class="left">
+					<input type="text" class="field" placeholder="поиск"/>
+		  			<button class="search_button" type="submit">Поиск</button>
+				</form>
+			</div>
+                <a href="about.html"><span class="right">О нас</span></a>
+			    <a href="{% url 'signup' %}"><span class="right">Регистрация</span></a>
+				<a href="{% url 'signin' %}"><span class="right">Войти</span></a>
+				<a href="#">
+					<div class="write_article">
+						<h2>Написать свою статью</h2>
+					</div>
+				</a>
+
+		</header>
+	</div>

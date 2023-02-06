@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{% static "img/favicon.png" %}" rel="shortcut icon" type="image/x-icon"/>
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+	<title>Сайт с хомяками</title>
+
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="clear">
+				<div id="main_soc_block">
+						<div id="main_soc_block_in">
+								<a href="{% url 'index' %}"><h1>Все о хомяках</h1></a>
+								<a href="write.html"><h2>Написать свою статью</h2></a>
+						</div>
+				</div>
+			</div>
+    </div>
+	<div id="page-wrap">
+		<header>
+			    <a href="{% url 'index' %}" title="На главную" id="logo"><img src="{% static "img/main.png" %}"></a>
+                <a href="about.html"><span class="right">О нас</span></a>
+			    <a href="register.html"><span class="right">Регистрация</span></a>
+				<a href="enter.html"><span class="right">Войти</span></a>
+			<input type="text" class="field" placeholder="поиск"/>	
+		</header>
+	</div>
+
+    <div>
+			<div id="menuHrefs">
+    			<ul>
+	    			<li><a href="{% url 'topics' %}">Виды домашних хомяков</a></li>
+    				<li><a href="{% url 'care' %}">Особенности содержания и ухода</a></li>
+    			</ul>
+            </div>
+    </div>
+
+
+	{% block content %}
+
+	{% endblock content %}
+
+	<footer>
+		<span class="left">Все права защищены =) &copy; 2022</span>
+		<span class="right">Мы в сетях<img src="{% static "img/vk.png" %}" alt="Вконтакте" title="Группа Вконтакте">
+		<img src="{%  static "img/face.png" %}" alt="Фейсбук" title="Фейсбук">
+		<img src="{% static "img/inst.png" %}" alt="Инстаграм" title="Инстаграм "></span>
+	</footer>
+
+
+</body>
+</html>

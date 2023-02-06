@@ -1,0 +1,25 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %} Главная {% endblock %}
+
+{% block content %}
+	<div class="wrapper">
+		<div class="articles">
+			{% for post in posts %}
+			<div class="article">	
+					<div class="content">
+						<div class="title">
+							<h4>{{ post.title|safe }}</h4>
+						</div>
+						<img src="media/{{ post.image }}" title="Humster picture">
+						<p>{{ post.content|truncatewords:8 }}</p>
+
+					</div>
+					<a href="{% url 'post_detail' slug=post.url %}">Читать далее</a>
+									
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% endblock content %}
+
