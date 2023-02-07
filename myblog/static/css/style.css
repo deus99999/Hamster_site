@@ -102,15 +102,11 @@ input[type=text].field{
 	font-size: 1.2em;
 }
 
-
-
 input[type=text].field:focus{
 	border: 2px solid #f5b8b;
 }
 
-}
-
-*menu {
+#menu {
 	flex-basis: 100%;
 	background: darksalmon;
 	color: #666;
@@ -119,6 +115,9 @@ input[type=text].field:focus{
 	margin-top: 100%;
 }
 
+body button:hover {
+	cursor: pointer;
+}
 
 #menuHrefs a {
 	padding: 3px;
@@ -126,9 +125,6 @@ input[type=text].field:focus{
 	font-family: Comic Sans MS, sans-serif;
 	margin-top: 20%;
 	margin-left: 2%;
-
-
-
 }
 
 #menuHrefs a:hover{
@@ -266,7 +262,7 @@ li{
 /* footers style */
 footer {
 	padding: 1%;
-	border-top: 2px, solid silver;
+	border-top: 2px solid silver;
 	margin-top: 10px;
 	margin-top: 3%
 }
@@ -275,7 +271,6 @@ footer img {
 	width: 10%;
 	float: left;
 	margin-right: 20px;
-	size: 5%;
 }
 
 footer img:hover {
@@ -379,13 +374,9 @@ footer img:hover {
 	width: 50%;
 	margin: 3% auto;
 	padding: 4%;
-
-
 }
 
-.registration_block reg {
-	margin ;
-}
+
 
 .registration_block h3 {
 	text-align: center;
@@ -420,12 +411,13 @@ footer img:hover {
 	padding: 1.4%;
 	background: orange;
 	margin-top: 14px;
-	border: 2px solid #FAC759;
+	border: 2px solid black;
 }
 
 .registration_block button:hover {
 	border: 2px solid black;
-	color: black;
+	color: orange;
+	background: black;
 }
 
 .registration_block .field {

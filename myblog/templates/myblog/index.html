@@ -5,7 +5,7 @@
 {% block content %}
 	<div class="wrapper">
 		<div class="articles">
-			{% for post in posts %}
+			{% for post in page_obj %}
 			<div class="article">	
 					<div class="content">
 						<div class="title">
@@ -26,22 +26,20 @@
 {% block pagination %}
     <nav>
         <ul>
-            {% if results.has_previous %}
-                <a class="" href="?page={{ results.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" tabindex="-1">Предыдущая</a>
+            {% if page_obj.has_previous %}
+                <a class="" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Предыдущая</a>
             {% else %}
-        <li>
-            <a href="#" tabindex="-1">Предыдущая</a>
-        </li>
-        {% endif %}
-        {% for i in results.paginator.page_range %}
-            {% if i == results.number %}
-                <li><a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ i }}</a></li>
+                <li><a href="#" tabindex="-1">Предыдущая</a></li>
+            {% endif %}
+            {% for i in page_obj.paginator.page_range %}
+                {% if i == page_obj.number %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
             {% else %}
-                <li><a href="?page{{ i }}{% if request.GET.q %}}&q={{ request.GET.q }}{% endif %}">{{ i }}</a></li>
+                <li><a href="?page{{ i }}">{{ i }}</a></li>
             {% endif %}
         {% endfor %}
-        {% if results.has_next %}
-            <a href="?page={{ results.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Следующая</a>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
         {% else %}
             <li><a href="#">Следующая</a></li>
         {% endif %}
