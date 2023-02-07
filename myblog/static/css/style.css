@@ -96,9 +96,13 @@ header {
 input[type=text].field{
 	border-radius: 5px;
 	border: 2px solid silver;
-	padding: 5px;
+	padding: 6px;
 	margin-left: 20px;
+	min-height: 15px;
+	font-size: 1.2em;
 }
+
+
 
 input[type=text].field:focus{
 	border: 2px solid #f5b8b;
@@ -307,13 +311,15 @@ footer img:hover {
 
 .search_button {
     width: 100px;
-    border: 1px solid black;
+    border: 2px solid black;
     background: orange;
     border-radius: 6%;
     cursor: pointer;
 	font-family: Comic Sans MS, sans-serif;
 	font-size: 1.2em;
-	line-height: 20px;
+	min-height: 15px;
+	padding: 2px;
+
 }
 
 
@@ -438,12 +444,37 @@ footer img:hover {
 
 }
 
+span .signin_login {
+	margin-left: 4%;
+	font-family: Comic Sans MS, sans-serif;
+	font-size: 1.2em;
+}
 
 
 
+.search {
+	
+	padding: 4%
+}
 
+.search p {
+	margin-top: 1%;
+	font-size: 1.3em;
+	font-family: Comic Sans MS, sans-serif;
+}
 
+.search nav li {
+	display: inline;
+	font-size: 1.3em;
+}
 
+.search_text {
+	margin: 2%;
+}
+
+.search_text a {
+	color: darkblue;
+}
 
 @media (max-width: 1024px) {
 	#main_soc_block_in h1 {
