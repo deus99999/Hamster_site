@@ -7,6 +7,6 @@
 		<h4>{{ post.title }}</h4>
         <img src="{{ post.image.url }}">
 		<p>{{ post.content }}</p>
-		<a href="#">Назад</a>
+		<a href="{% url 'index' %}">Назад</a>
 	</div>
 {% endblock %}

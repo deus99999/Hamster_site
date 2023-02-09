@@ -40,9 +40,9 @@
             {% endif %}
         {% endfor %}
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+            <a class="next" href="?page={{ page_obj.next_page_number }}">Следующая</a>
         {% else %}
-            <li><a href="#">Следующая</a></li>
+            <li class="next"><a href="#">Следующая</a></li>
         {% endif %}
         </ul>
     </nav>

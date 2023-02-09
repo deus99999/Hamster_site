@@ -17,13 +17,13 @@ body {
 	background-color: f7f7f7;
 	font-size: 1em;
 	font-family: "Segoe UI", sans-serif;
-	line-height: 135%;
 }
 
-h1 {
+.main_soc_block_in h1 {
     -webkit-text-stroke: 3px white;
 	font-size: 540%;
 	font-family: Comic Sans MS, sans-serif;
+	padding-bottom: 5%;
 
 }
 
@@ -43,7 +43,7 @@ a:hover {
 }
 
 a:active {
-	color:  8ce4a6;
+	color:  #8ce4a6;
 
 }
 
@@ -141,7 +141,7 @@ body button:hover {
 /* general style for site */
 .wrapper {
 	width: 88%;
-	margin-top: 20px;
+	margin-top: 3%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -149,7 +149,7 @@ body button:hover {
 .wrapper .articles {
 	display: grid;
 	grid-gap: 3%;
-	grid-template-columns: repeat(3, 31.3%);
+	grid-template-columns: repeat(3, 300px);
 
 }
 
@@ -165,7 +165,6 @@ li{
 	box-sizing: border-box;
 	border-radius: 4%;
 	background-color: #F8F7F7;
-	margin: 1%;
 	height: auto;
 }
 
@@ -183,7 +182,7 @@ li{
 	width: 90%;
 	text-indent: 1em;
 	padding-top: 6px;
-	font-family: Verdana;
+	font-family: Verdana fantasy;
 	line-height: 110%;
 	font-size: 18px;
 	min-height: 50px;
@@ -224,7 +223,6 @@ li{
 	padding: 0;
 	border-bottom: 2px solid silver;
 	border-top: 2px solid silver;
-	margin: 0px 0px;
     /*background-image: url({% static 'img/bg.jpg' %}); */
 	background-image: url(bg.jpg); 
 
@@ -235,7 +233,6 @@ li{
 
 #main_soc_block_in {
 	text-align: center;
-	padding: 5%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -470,6 +467,22 @@ span .signin_login {
 
 
 
+
+.pagination li {
+	display: inline-block;
+
+}
+
+.pagination .next a, .pagination .previous a {
+font-weight:bold;
+border:solid 1px #FFFFFF;
+}
+
+
+
+
+
+
 @media (max-width: 1024px) {
 	#main_soc_block_in h1 {
     	font-size: 5em;
@@ -477,9 +490,11 @@ span .signin_login {
 		}
 
 	.wrapper .articles {
-	display: flex;
-	flex-wrap: wrap;
-	}
+	display: grid;
+	grid-gap: 2%;
+	grid-template-columns: repeat(2, 300px);
+
+}
 	.registration_block {
 		width: 90%;
 		margin: 4% 4%;
@@ -515,8 +530,7 @@ span .signin_login {
 	}
 
 	.wrapper .articles {
-		display: flex;
-		flex-wrap: wrap;
+		grid-template-columns: repeat(1, 300px);
 	}
 
 
