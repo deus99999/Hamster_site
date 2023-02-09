@@ -32,13 +32,15 @@
             {% else %}
                 <li><a href="#" tabindex="-1">Предыдущая</a></li>
             {% endif %}
+
             {% for i in page_obj.paginator.page_range %}
                 {% if i == page_obj.number %}
+                    <li><a href="?page={{ i }}" class="sr-only">{{ i }}</a></li>
+                {% else %}
                     <li><a href="?page={{ i }}">{{ i }}</a></li>
-            {% else %}
-                <li><a href="?page{{ i }}">{{ i }}</a></li>
-            {% endif %}
-        {% endfor %}
+                {% endif %}
+            {% endfor %}
+
         {% if page_obj.has_next %}
             <a class="next" href="?page={{ page_obj.next_page_number }}">Следующая</a>
         {% else %}

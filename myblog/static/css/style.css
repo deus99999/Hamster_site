@@ -247,8 +247,6 @@ li{
 footer {
 	padding: 1%;
 	border-top: 2px solid silver;
-	margin-top: 10px;
-	margin-top: 3%
 }
 
 footer img {
@@ -455,10 +453,12 @@ span .signin_login {
 
 
 .pagin_div {
-	max-width: 200px;
+	width: 400px;
 	margin-left: auto;
 	margin-right: auto; 
 }
+
+
 
 
 .pagination nav {
@@ -483,6 +483,15 @@ span .signin_login {
     border-radius: 5px;
     font-size: 1.2em;
 
+}
+
+
+.pagination a:hover {
+    background-color: #e9e9e9;
+}
+
+.pagination .sr-only {
+	background: orange;
 }
 
 
