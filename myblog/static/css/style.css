@@ -19,7 +19,7 @@ body {
 	font-family: "Segoe UI", sans-serif;
 }
 
-.main_soc_block_in h1 {
+h1 {
     -webkit-text-stroke: 3px white;
 	font-size: 540%;
 	font-family: Comic Sans MS, sans-serif;
@@ -140,16 +140,17 @@ body button:hover {
 
 /* general style for site */
 .wrapper {
-	width: 88%;
+	width: 80%;
 	margin-top: 3%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 3%;
 }
 
 .wrapper .articles {
 	display: grid;
 	grid-gap: 3%;
-	grid-template-columns: repeat(3, 300px);
+	grid-template-columns: repeat(3, 400px);
 
 }
 
@@ -205,10 +206,12 @@ li{
 	margin-bottom: 3%;
 	border-radius: 4px;
 	float: left;
+	border: 1px solid black;
+	font-size: 1.1em;
 }
 
 
-#wrapper #articles .article a:hover {
+.wrapper .articles .article a:hover {
 	background-color: #F98E4D;
 	color: black;
 }
@@ -238,23 +241,7 @@ li{
 }
 
 
-.article a {
-	padding: 7px;
-	background-color: #FAC759;
-	margin-left: 5%;
-	border-radius: 4px;
-	float: left;
-	margin-top: 15px;
-	font-weight: bold;
-	padding: 1%;
-	border: 2px solid #FAC759;
 
-}
-
-.article a:hover {
-	border: 2px solid black;
-	color: black;
-}
 
 /* footers style */
 footer {
@@ -467,18 +454,36 @@ span .signin_login {
 
 
 
-
-.pagination li {
-	display: inline-block;
-
-}
-
-.pagination .next a, .pagination .previous a {
-font-weight:bold;
-border:solid 1px #FFFFFF;
+.pagin_div {
+	max-width: 200px;
+	margin-left: auto;
+	margin-right: auto; 
 }
 
 
+.pagination nav {
+	display: flex;
+    justify-content: center;
+}
+
+
+
+.pagination {
+	display: flex;
+    column-gap: 5px;
+}
+
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1.2em;
+
+}
 
 
 

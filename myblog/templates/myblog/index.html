@@ -26,7 +26,7 @@
 {% block pagination %}
     <div class="pagin_div">
         <nav class="pagination">
-        <ul>
+        <ul class="pagination">
             {% if page_obj.has_previous %}
                 <a class="" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Предыдущая</a>
             {% else %}
