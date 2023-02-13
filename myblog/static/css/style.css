@@ -456,6 +456,8 @@ span .signin_login {
 	width: 400px;
 	margin-left: auto;
 	margin-right: auto; 
+	padding-top: 2%;
+	padding-bottom: 2%;
 }
 
 
@@ -494,58 +496,118 @@ span .signin_login {
 	background: orange;
 }
 
+.pagination .sr-only:hover {
+	background: orange;
+}
+
+
+@media (max-width: 1300px) {
+	
+	.wrapper {
+		width: 80%;
+	}
+
+
+	.wrapper .articles {
+		display: grid;
+		grid-gap: 1%;
+		grid-template-columns: repeat(2, 450px);
+
+
+	}
+
+	.wrapper .articles .article {
+		margin: 2% 2% 2% 5%;
+	}
+}
+
+
+
+
+@media (max-width: 1300px) {
+	
+	.wrapper {
+		width: 100%;
+	}
+	.wrapper .articles {
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+	}
+
+	.wrapper .articles .article {
+		flex-basis: 500px;
+		margin: 2% 0px;
+	}
+}
+
 
 
 
 @media (max-width: 1024px) {
+	
+
+	.wrapper .articles {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+
+
+	}
+
+	.wrapper .articles .article {
+		flex-basis: 500px;
+		margin: 2% 2% 2% 5%;
+	}
+}
+
+
+
+
+@media (max-width: 700px) {
+	
+
+	.wrapper .articles {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+
+
+	}
+
+	.wrapper .articles .article {
+		flex-basis: 500px;
+		margin: 2% 2% 2% 5%;
+	}
+
 	#main_soc_block_in h1 {
     	font-size: 5em;
 		line-height: 70%;
 		}
 
-	.wrapper .articles {
-	display: grid;
-	grid-gap: 2%;
-	grid-template-columns: repeat(2, 300px);
-
-}
 	.registration_block {
 		width: 90%;
-		margin: 4% 4%;
+		margin: 10% 4%;
 		padding: 2%;
 		border: none;
 	}
+
 	.registration_block	.form-control {
-
-	font-size: 0.9em;
+		font-size: 0.9em;
 	}
+
 	.registration_block label {
-	font-size: 1em;
+		font-size: 1em;
+	}
 
-	}
 	.registration_block button {
-	font-size: 1em;
+		font-size: 1em;
 	}
+
 	.registration_block form {
     	width: 90%;
 	}
-
-@media (max-width: 700px) {
-	header {
-		min-height: 100px;
-	}
-}
-
-	#main_soc_block_in h1 {
-		font-size: 5em;
-		float: right;
-		hyphens: auto;
-		line-height: 70%;
-	}
-
-	.wrapper .articles {
-		grid-template-columns: repeat(1, 300px);
-	}
-
-
 }
