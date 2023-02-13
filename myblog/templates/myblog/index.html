@@ -34,7 +34,7 @@
             {% endif %}
 
             {% for i in page_obj.paginator.page_range %}
-                {% if i == page_obj.number %}
+                {% if i == page_obj.nfiumber %}
                     <li><a href="?page={{ i }}" class="sr-only">{{ i }}</a></li>
                 {% else %}
                     <li><a href="?page={{ i }}">{{ i }}</a></li>
