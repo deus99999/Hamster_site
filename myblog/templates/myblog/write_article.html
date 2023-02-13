@@ -1,0 +1,15 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %} Написать статью {% endblock %}
+
+{% block content%}
+<div class="create_article">
+	<form action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+	</form>
+	<button name="submit">Добавить статью</button>
+</div>
+	
+
+{% endblock %}

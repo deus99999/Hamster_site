@@ -41,6 +41,7 @@ class SignUpView(View):
             'form': form,
         })
 
+
 class SignInView(View):
     def get(self, request, *args, **kwargs):
         form = SignInForm()
@@ -58,12 +59,7 @@ class SignInView(View):
         return render(request, 'myblog/signin.html', context={'form': form})
 
 
-# class SearchResultView(View):
-#     def get(self, request, *args, **kwargs):
-#         return render(request, 'myblog/search.html', context={
-#             'title': 'Поиск'
-#         })
-#
+
 
 class SearchResultView(View):
     def get(self, request, *args, **kwargs):
@@ -81,3 +77,15 @@ class SearchResultView(View):
             'results': page_obj,
             'count': paginator.count
         })
+
+
+# class SearchResultView(View):
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'myblog/search.html', context={
+#             'title': 'Поиск'
+#         })
+
+
+class WriteArticleView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'myblog/write_article.html')

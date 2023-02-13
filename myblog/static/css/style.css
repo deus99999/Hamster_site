@@ -501,6 +501,12 @@ span .signin_login {
 }
 
 
+.create_article {
+	min-height: 700px;
+	width: 80%;
+}
+
+
 @media (max-width: 1300px) {
 	
 	.wrapper {

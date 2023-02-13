@@ -16,10 +16,8 @@
 				<a href="{% url 'signin' %}"><span class="right">Войти</span></a>
             {% endif %}
                 <a href="about.html"><span class="right">О нас</span></a>
-					<div class="write_article">
-						<h2>Написать свою статью</h2>
-					</div>
-				</a>
+				<a href="{% url 'write_article' %}" class="write_article"><h2>Написать свою статью</h2></a>
+				
 
 		</header>
 	</div>
