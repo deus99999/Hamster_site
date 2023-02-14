@@ -4,12 +4,10 @@
 
 {% block content%}
 <div class="add_article">
-	<form action="" method="post">
-		<input type="text" placeholder="Название статьи" class="form-control" name=""><br>
-		<textarea class="form-control" placeholder="Текст статьи"></textarea><br>
+	<form action="write_article" method="post">
+		
 		{% csrf_token %}
 		{{ form.as_p }}
-		<input type="file" placeholder="Фотография для статьи" class="form-control" name=""><br>
 
 		<button name="submit">Добавить статью</button>
 

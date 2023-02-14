@@ -1,11 +1,31 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.core.paginator import Paginator
 from .models import Post
-from .forms import SigUpForm, SignInForm
+from .forms import SigUpForm, SignInForm, CreateArticleForm
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponseRedirect
 from django.db.models import Q
+from django.views.generic.edit import FormView
+from django.views.generic import CreateView
+from django.urls import reverse
+
+
+def create_article(request):
+    if request.method == 'POST':
+        form = CreateArticleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('articles'))
+    else:
+        form = CreateArticleForm()
+    context = {'form': form}
+    return render(request, 'myblog/write_article.html', context)
+
+
+class AboutView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'myblog/about.html')
 
 
 class MainView(View):
@@ -59,8 +79,6 @@ class SignInView(View):
         return render(request, 'myblog/signin.html', context={'form': form})
 
 
-
-
 class SearchResultView(View):
     def get(self, request, *args, **kwargs):
         query = self.request.GET.get('q')
@@ -89,3 +107,8 @@ class SearchResultView(View):
 class WriteArticleView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'myblog/write_article.html')
+
+
+
+
+

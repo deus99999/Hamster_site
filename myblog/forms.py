@@ -2,6 +2,26 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .models import Post
+from django.forms import ModelForm
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField
+    message = forms.CharField(
+        widget=forms.Textarea
+    )
+
+    def send_email(self):
+        pass
+
+
+class CreateArticleForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'content']
+        labels = {'title': "Заголовок", "content": "Текст статьи"}
+        widgets = {"content": forms.Textarea(attrs={'cols': 80, 'rows': 20})}
+
 
 
 class SigUpForm(forms.Form):

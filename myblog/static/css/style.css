@@ -505,7 +505,7 @@ span .signin_login {
 
 .add_article {
 	width: 80%;
-	min-height: 600px;
+	min-height: 450px;
 	border: 3px solid orange;
 	border-radius: 2%;
 	margin: 3% auto;
