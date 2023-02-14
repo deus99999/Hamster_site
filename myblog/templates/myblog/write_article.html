@@ -3,12 +3,17 @@
 {% block title %} Написать статью {% endblock %}
 
 {% block content%}
-<div class="create_article">
-	<form action="">
+<div class="add_article">
+	<form action="" method="post">
+		<input type="text" placeholder="Название статьи" class="form-control" name=""><br>
+		<textarea class="form-control" placeholder="Текст статьи"></textarea><br>
 		{% csrf_token %}
 		{{ form.as_p }}
+		<input type="file" placeholder="Фотография для статьи" class="form-control" name=""><br>
+
+		<button name="submit">Добавить статью</button>
+
 	</form>
-	<button name="submit">Добавить статью</button>
 </div>
 	
 
