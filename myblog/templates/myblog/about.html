@@ -1,0 +1,12 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %} О нас {% endblock %}
+
+{% block content %}
+	<p>Это простой сайт-блог реализованный с помощью фреймворка Django, созданный просто чтобы научиться чему-то новому. А хомяки это так, они просто прикольные.</p>
+	<form method="post">
+		{% csrf_token %}
+    	{{ form.as_p }}
+    	<input type="submit" value="Send message">
+	</form>
+{% endblock %}

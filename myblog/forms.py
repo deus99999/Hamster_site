@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .models import Post
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput, Textarea, DateTimeInput, Select, FileInput
 
 
 class ContactForm(forms.Form):
@@ -18,9 +18,25 @@ class ContactForm(forms.Form):
 class CreateArticleForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content']
+        fields = ['title', 'image', 'content', 'created_at', 'author']
         labels = {'title': "Заголовок", "content": "Текст статьи"}
-        widgets = {"content": forms.Textarea(attrs={'cols': 80, 'rows': 20})}
+        widgets = {
+            "title": TextInput(attrs={
+                "class": "form-control",
+                "placeholder": "Название"}),
+            "image": FileInput(attrs={
+                "class": "form-control",
+                "value": "Название"}),
+            "content": Textarea(attrs={
+                "class": "form-control",
+                'cols': 50, 'rows': 20,
+                "placeholder": "Текст статьи"}),
+            "created_at": DateTimeInput(attrs={
+                "class": "form-control"}),
+            "author": Select(attrs={
+                "class": "form-control",
+                "placeholder": "Автор"}),
+        }
 
 
 

@@ -4,11 +4,12 @@
 
 {% block content%}
 <div class="add_article">
-	<form action="write_article" method="post">
-		
+	<form method="post">
+		<p>{{ error }}</p>
+		{% for form in forms %}
 		{% csrf_token %}
-		{{ form.as_p }}
-
+		{{ form }}<br>
+		{% endfor %}
 		<button name="submit">Добавить статью</button>
 
 	</form>

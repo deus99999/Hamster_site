@@ -543,9 +543,15 @@ span .signin_login {
 	padding: 1.2%;
 	border-radius: 3%;
 	font-size: 1.1em;
+	border: 2px solid black;
+	min-width: 60%; 
 }
 
-
+.add_article p {
+	margin: 0px 0px;
+	font-size: 1.3em;
+	font-family: Comic Sans MS, sans-serif;
+}
 
 
 

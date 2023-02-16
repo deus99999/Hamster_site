@@ -12,14 +12,17 @@ from django.urls import reverse
 
 
 def create_article(request):
+    error = ''
     if request.method == 'POST':
         form = CreateArticleForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('articles'))
+            return redirect('index')
+        else:
+            error = "Форма заполнена неверно."
     else:
         form = CreateArticleForm()
-    context = {'form': form}
+    context = {'forms': form, 'error': error}
     return render(request, 'myblog/write_article.html', context)
 
 
@@ -30,7 +33,7 @@ class AboutView(View):
 
 class MainView(View):
     def get(self, request, *args, **kwargs):
-        posts = Post.objects.get_queryset().order_by('id')
+        posts = Post.objects.get_queryset().order_by('-created_at')
         paginator = Paginator(posts, 6)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
