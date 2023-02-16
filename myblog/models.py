@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
+from django.template.defaultfilters import slugify
 
 
 class Author(models.Model):
@@ -13,7 +14,7 @@ class Author(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    url = models.SlugField()
+    url = models.SlugField(null=False, unique=True)
     content = models.TextField()
     image = models.ImageField()
     created_at = models.DateField(default=timezone.now)
@@ -21,3 +22,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('index', kwargs={'url': self.url})
+
+    def save(self, *args, **kwargs):  # new
+        if not self.utl:
+            self.url = slugify(self.title)
+        return super().save(*args, **kwargs)

@@ -4,7 +4,7 @@
 
 {% block content%}
 <div class="add_article">
-	<form method="post">
+	<form method="post" enctype="multipart/form-data" novalidate>
 		<p>{{ error }}</p>
 		{% for form in forms %}
 		{% csrf_token %}

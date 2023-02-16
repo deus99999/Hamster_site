@@ -7,14 +7,15 @@ from django.contrib.auth import login, authenticate
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.views.generic.edit import FormView
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from django.urls import reverse
+from django.utils import timezone
 
 
 def create_article(request):
     error = ''
     if request.method == 'POST':
-        form = CreateArticleForm(request.POST)
+        form = CreateArticleForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('index')
@@ -24,6 +25,11 @@ def create_article(request):
         form = CreateArticleForm()
     context = {'forms': form, 'error': error}
     return render(request, 'myblog/write_article.html', context)
+
+
+class WriteArticleView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'myblog/write_article.html')
 
 
 class AboutView(View):

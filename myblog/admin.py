@@ -3,6 +3,7 @@ from .models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'url': ('title',)}
+
 
 admin.site.register(Post, PostAdmin)

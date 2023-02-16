@@ -11,8 +11,7 @@ urlpatterns = [
     path('signin/', SignInView.as_view(), name='signin'),
     path('signout/', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='signout'),
     path('search/', SearchResultView.as_view(), name='search_results'),
-    path('write_article/', create_article, name='write_article'),
-    # path('new_article/<int>:post_id/', new_article, name="new_article"),
+    path('write_article', create_article, name='write_article'),
     path('about/', AboutView.as_view(), name='about'),
 
 ]

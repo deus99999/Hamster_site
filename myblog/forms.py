@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate
 from .models import Post
 from django.forms import ModelForm, TextInput, Textarea, DateTimeInput, Select, FileInput
 
+from django.template.defaultfilters import slugify
 
 class ContactForm(forms.Form):
     name = forms.CharField
@@ -18,26 +19,21 @@ class ContactForm(forms.Form):
 class CreateArticleForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'image', 'content', 'created_at', 'author']
-        labels = {'title': "Заголовок", "content": "Текст статьи"}
+        fields = ['title', 'image', 'content', 'url', 'author']
         widgets = {
             "title": TextInput(attrs={
                 "class": "form-control",
                 "placeholder": "Название"}),
             "image": FileInput(attrs={
-                "class": "form-control",
-                "value": "Название"}),
+                "class": "form-control"}),
             "content": Textarea(attrs={
                 "class": "form-control",
                 'cols': 50, 'rows': 20,
                 "placeholder": "Текст статьи"}),
-            "created_at": DateTimeInput(attrs={
-                "class": "form-control"}),
-            "author": Select(attrs={
-                "class": "form-control",
-                "placeholder": "Автор"}),
-        }
 
+            "author": Select(attrs={
+                "class": "form-control"})
+        }
 
 
 class SigUpForm(forms.Form):
