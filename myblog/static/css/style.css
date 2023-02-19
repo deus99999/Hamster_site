@@ -428,7 +428,8 @@ span .signin_login {
 
 .search {
 	
-	padding: 4%
+	padding: 4%;
+	min-height: 400px;
 }
 
 .search p {

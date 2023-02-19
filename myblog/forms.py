@@ -4,7 +4,6 @@ from django.contrib.auth import authenticate
 from .models import Post
 from django.forms import ModelForm, TextInput, Textarea, DateTimeInput, Select, FileInput
 
-from django.template.defaultfilters import slugify
 
 class ContactForm(forms.Form):
     name = forms.CharField
@@ -30,7 +29,9 @@ class CreateArticleForm(forms.ModelForm):
                 "class": "form-control",
                 'cols': 50, 'rows': 20,
                 "placeholder": "Текст статьи"}),
-
+            "url": TextInput(attrs={
+                "class": "form-control",
+                "placeholder": "url"}),
             "author": Select(attrs={
                 "class": "form-control"})
         }

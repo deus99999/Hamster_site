@@ -22,8 +22,10 @@
 {% endblock %}
 
 {% block pagination %}
-    <nav>
-        <ul>
+    <div class="pagin_div">
+
+    <nav class="pagination">
+        <ul class="pagination">
             {% if results.has_previous %}
                 <a class="" href="?page={{ results.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" tabindex="-1">Предыдущая</a>
             {% else %}
@@ -33,7 +35,7 @@
         {% endif %}
         {% for i in results.paginator.page_range %}
             {% if i == results.number %}
-                <li><a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ i }}</a></li>
+                <li><a href="?page={{ i }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="sr-only">{{ i }}</a></li>
             {% else %}
                 <li><a href="?page{{ i }}{% if request.GET.q %}}&q={{ request.GET.q }}{% endif %}">{{ i }}</a></li>
             {% endif %}
@@ -46,4 +48,5 @@
         </ul>
     </nav>
     <br>
+</div>
 {% endblock %}

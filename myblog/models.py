@@ -23,10 +23,3 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse('index', kwargs={'url': self.url})
-
-    def save(self, *args, **kwargs):  # new
-        if not self.utl:
-            self.url = slugify(self.title)
-        return super().save(*args, **kwargs)
