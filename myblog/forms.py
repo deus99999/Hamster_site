@@ -6,10 +6,15 @@ from django.forms import ModelForm, TextInput, Textarea, DateTimeInput, Select, 
 
 
 class ContactForm(forms.Form):
-    name = forms.CharField
-    message = forms.CharField(
-        widget=forms.Textarea
-    )
+    from_email = forms.EmailField(label='Email',
+                                  widget=forms.TextInput(attrs={"class": "form-control",
+                                                                "placeholder": "Ваш Email"}),
+                                  required=True)
+    message = forms.CharField(label='Сообщение',
+                              widget=forms.Textarea(attrs={"class": "form-control",
+                                                                'cols': 50, 'rows': 15,
+                                                              "placeholder": "Текст сообщения"}),
+                              required=True)
 
     def send_email(self):
         pass

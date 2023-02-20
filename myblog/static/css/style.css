@@ -556,6 +556,19 @@ span .signin_login {
 
 
 
+.about {
+	min-height: 350px;
+}
+
+.about p {
+	margin: 0px 0px;
+	padding: 2% 5%;
+	font-size: 1.4em;
+	font-family: Comic Sans MS, sans-serif;
+}
+
+
+
 @media (max-width: 1300px) {
 	
 	.wrapper {

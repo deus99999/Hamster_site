@@ -131,3 +131,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = "/"
+
+
+# config/settings.py
+RECIPIENTS_EMAIL = ['rudenkoalexey@ukr.net']   # замените на свою почту
+DEFAULT_FROM_EMAIL = 'rudenkoalexey@ukr.net'  # замените на свою почту
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import MainView, PostDetailView, SignUpView, SignInView, \
-    SearchResultView, WriteArticleView, AboutView, create_article
+    SearchResultView, WriteArticleView, create_article, contact_view
 from django.contrib.auth.views import LogoutView
 from django.conf import settings
 
@@ -12,7 +12,7 @@ urlpatterns = [
     path('signout/', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='signout'),
     path('search/', SearchResultView.as_view(), name='search_results'),
     path('write_article', create_article, name='write_article'),
-    path('about/', AboutView.as_view(), name='about'),
+    path('about/', contact_view, name='about'),
 
 ]
 

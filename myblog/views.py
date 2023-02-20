@@ -2,14 +2,41 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.core.paginator import Paginator
 from .models import Post
-from .forms import SigUpForm, SignInForm, CreateArticleForm
+from .forms import SigUpForm, SignInForm, CreateArticleForm, ContactForm
 from django.contrib.auth import login, authenticate
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.db.models import Q
 from django.views.generic.edit import FormView
 from django.views.generic import CreateView, DetailView
 from django.urls import reverse
 from django.utils import timezone
+from django.core.mail import send_mail, BadHeaderError
+from blog.settings import RECIPIENTS_EMAIL, DEFAULT_FROM_EMAIL
+
+
+def contact_view(request):
+    # если метод GET, вернем форму
+    if request.method == 'GET':
+        form = ContactForm()
+    elif request.method == 'POST':
+        # если метод POST, проверим форму и отправим письмо
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(f'От {from_email}', message,
+                          DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL)
+            except BadHeaderError:
+                return HttpResponse('Ошибка в теме письма.')
+            return redirect('success')
+    else:
+        return HttpResponse('Неверный запрос.')
+    return render(request, "myblog/about.html", {'forms': form})
+
+
+def success_view(request):
+    return HttpResponse('Приняли! Спасибо за вашу заявку.')
 
 
 def create_article(request):
@@ -30,11 +57,6 @@ def create_article(request):
 class WriteArticleView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'myblog/write_article.html')
-
-
-class AboutView(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'myblog/about.html')
 
 
 class MainView(View):

@@ -3,10 +3,16 @@
 {% block title %} О нас {% endblock %}
 
 {% block content %}
+<div class="add_article">
 	<p>Это простой сайт-блог реализованный с помощью фреймворка Django, созданный просто чтобы научиться чему-то новому. А хомяки это так, они просто прикольные.</p>
+	<p>Вы также можете связаться со мной по эмейл</p>
 	<form method="post">
+		<p>{{ error }}</p>
+		{% for form in forms %}
 		{% csrf_token %}
-    	{{ form.as_p }}
-    	<input type="submit" value="Send message">
+		{{ form }}<br>
+		{% endfor %}
+    	<button name="submit">Отправить сообщение</button>
 	</form>
+</div>	
 {% endblock %}
