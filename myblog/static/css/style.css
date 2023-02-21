@@ -140,7 +140,7 @@ body button:hover {
 
 /* general style for site */
 .wrapper {
-	width: 80%;
+	width: 85%;
 	margin-top: 3%;
 	margin-left: auto;
 	margin-right: auto;
@@ -150,7 +150,7 @@ body button:hover {
 .wrapper .articles {
 	display: grid;
 	grid-gap: 3%;
-	grid-template-columns: repeat(3, 400px);
+	grid-template-columns: repeat(auto-fill, 420px);
 
 }
 
@@ -343,11 +343,14 @@ footer img:hover {
 	margin-bottom: 5%;
 	font-weight: bold;
 	border: 2px solid #FAC759;
+	border: 2px solid black;
+
 }
 
 .post_detail a:hover {
-	border: 2px solid black;
 	color: black;
+		background-color: #F98E4D;
+
 }
 
 .registration_block {
@@ -418,10 +421,10 @@ footer img:hover {
 
 }
 
-span .signin_login {
+.signin_login {
 	margin-left: 4%;
 	font-family: Comic Sans MS, sans-serif;
-	font-size: 1.2em;
+	font-size: 1.4em;
 }
 
 

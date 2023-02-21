@@ -14,6 +14,17 @@ from django.core.mail import send_mail, BadHeaderError
 from blog.settings import RECIPIENTS_EMAIL, DEFAULT_FROM_EMAIL
 
 
+class UserPostsView(View):
+    def get(self, request, *args, **kwargs):
+        posts = Post.objects.filter(author=request.user)
+        paginator = Paginator(posts, 6)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'myblog/my_articles.html', context={
+            'page_obj': page_obj
+        })
+
+
 def contact_view(request):
     # если метод GET, вернем форму
     if request.method == 'GET':
@@ -29,13 +40,13 @@ def contact_view(request):
                           DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL)
             except BadHeaderError:
                 return HttpResponse('Ошибка в теме письма.')
-            return redirect('success')
+            return render(request, 'myblog/success.html')
     else:
         return HttpResponse('Неверный запрос.')
     return render(request, "myblog/about.html", {'forms': form})
 
 
-def success_view(request):
+def success_sending_email_massage(request):
     return HttpResponse('Приняли! Спасибо за вашу заявку.')
 
 
@@ -88,7 +99,7 @@ class SignUpView(View):
             if user is not None:
                 login(request, user)
                 return HttpResponseRedirect('/')
-        return render(request, 'myblog/signup.html', context={
+        return render(request, 'myblog/success_signin.html', context={
             'form': form,
         })
 

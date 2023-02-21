@@ -134,6 +134,16 @@ LOGOUT_REDIRECT_URL = "/"
 
 
 # config/settings.py
-RECIPIENTS_EMAIL = ['rudenkoalexey@ukr.net']   # замените на свою почту
-DEFAULT_FROM_EMAIL = 'rudenkoalexey@ukr.net'  # замените на свою почту
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# почты для получения писем
+RECIPIENTS_EMAIL = ['rudenkooleksei@gmail.com']
+
+# почта отправителя по умолчанию, та что верифицирована
+DEFAULT_FROM_EMAIL = 'rudenkoalexey@ukr.net'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+
+# ваш уникальный апи-ключ с сайта sendgrid
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
