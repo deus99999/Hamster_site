@@ -11,7 +11,7 @@ from django.views.generic import CreateView, DetailView
 from django.urls import reverse
 from django.utils import timezone
 from django.core.mail import send_mail, BadHeaderError
-from blog.settings import RECIPIENTS_EMAIL, DEFAULT_FROM_EMAIL
+from blog.settings import DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL
 
 
 class UserPostsView(View):
@@ -36,8 +36,7 @@ def contact_view(request):
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
             try:
-                send_mail(f'От {from_email}', message,
-                          DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL)
+                send_mail("Subject", message, DEFAULT_FROM_EMAIL, ["maryfeurige@gmail.com"])
             except BadHeaderError:
                 return HttpResponse('Ошибка в теме письма.')
             return render(request, 'myblog/success.html')
