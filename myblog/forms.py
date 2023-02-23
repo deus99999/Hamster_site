@@ -6,18 +6,15 @@ from django.forms import ModelForm, TextInput, Textarea, DateTimeInput, Select, 
 
 
 class ContactForm(forms.Form):
-    from_email = forms.EmailField(label='Email',
-                                  widget=forms.TextInput(attrs={"class": "form-control",
-                                                                "placeholder": "Ваш Email"}),
-                                  required=True)
+    # from_email = forms.EmailField(label='Email',
+    #                             widget=forms.TextInput(attrs={"class": "form-control",
+    #                                                           "placeholder": "Ваш Email"}),
+    #                               required=True)
     message = forms.CharField(label='Сообщение',
                               widget=forms.Textarea(attrs={"class": "form-control",
                                                                 'cols': 50, 'rows': 15,
                                                               "placeholder": "Текст сообщения"}),
                               required=True)
-
-    def send_email(self):
-        pass
 
 
 class CreateArticleForm(forms.ModelForm):
@@ -84,9 +81,6 @@ class SigUpForm(forms.Form):
             username=self.cleaned_data['username'],
             password=self.cleaned_data['password'],
         )
-        # user.save()
-        # auth = authenticate(**self.cleaned_data)
-        # return auth
 
 
 class SignInForm(forms.Form):

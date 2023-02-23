@@ -267,6 +267,12 @@ footer img:hover {
 
 }
 
+#page-wrap p {
+	font-family: Verdana fantasy;
+	font-size: 1.3em;
+	
+}
+
 .write_article {
 	border: 3px solid black;
 	border-radius: 4%;

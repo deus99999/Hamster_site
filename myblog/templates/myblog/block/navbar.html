@@ -10,6 +10,7 @@
 			</div>
             {% if user.is_authenticated %}
                 <span class="signin_login">{{ user }}</span>
+
                 <a href="{% url 'my_articles' %}"><span class="right">Мои статьи</span></a>
                 <a href="{% url 'signout' %}"><span class="right">Выход</span></a>
             {% else %}
@@ -21,4 +22,5 @@
 				
 
 		</header>
+		
 	</div>

@@ -33,10 +33,9 @@ def contact_view(request):
         # если метод POST, проверим форму и отправим письмо
         form = ContactForm(request.POST)
         if form.is_valid():
-            from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
             try:
-                send_mail("Subject", message, DEFAULT_FROM_EMAIL, ["maryfeurige@gmail.com"])
+                send_mail("Subject", message, DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL)
             except BadHeaderError:
                 return HttpResponse('Ошибка в теме письма.')
             return render(request, 'myblog/success.html')
@@ -75,8 +74,13 @@ class MainView(View):
         paginator = Paginator(posts, 6)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
+
+        # Number of visits to this view, as counted in the session variable.
+        num_visits = request.session.get('num_visits', 0)
+        request.session['num_visits'] = num_visits + 1
+
         return render(request, 'myblog/index.html', context={
-            'page_obj': page_obj
+            'page_obj': page_obj, 'num_visits':num_visits
         })
 
 
