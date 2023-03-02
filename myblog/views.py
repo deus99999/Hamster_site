@@ -35,7 +35,7 @@ def contact_view(request):
         if form.is_valid():
             message = form.cleaned_data['message']
             try:
-                send_mail("Subject", message, DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL)
+                send_mail("Письмо от пользователя сайта", message, DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL)
             except BadHeaderError:
                 return HttpResponse('Ошибка в теме письма.')
             return render(request, 'myblog/success.html')
