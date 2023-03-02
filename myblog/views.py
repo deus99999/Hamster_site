@@ -44,15 +44,17 @@ def contact_view(request):
     return render(request, "myblog/about.html", {'forms': form})
 
 
-def success_sending_email_massage(request):
-    return HttpResponse('Приняли! Спасибо за вашу заявку.')
-
-
 def create_article(request):
+
     error = ''
     if request.method == 'POST':
         form = CreateArticleForm(request.POST, request.FILES)
         if form.is_valid():
+            form = form.save(commit=False)
+
+            form.created_at = timezone.now()
+            form.author = request.user
+
             form.save()
             return redirect('index')
         else:

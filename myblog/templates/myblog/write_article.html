@@ -4,15 +4,18 @@
 
 {% block content%}
 <div class="add_article">
-	<form method="post" enctype="multipart/form-data" novalidate>
+	{% if request.user.is_authenticated %}
+	<form method="post" method="get" enctype="multipart/form-data" novalidate>
 		<p>{{ error }}</p>
 		{% for form in forms %}
 		{% csrf_token %}
 		{{ form }}<br>
 		{% endfor %}
 		<button name="submit">Добавить статью</button>
-
 	</form>
+	{% else %}
+	<p>Чтобы написать статью <a href="{% url 'signup' %}"> зарегистрируйтесь</a> или <a href="{% url 'signin' %}"> войдите</a></p>
+	{% endif %}
 </div>
 	
 

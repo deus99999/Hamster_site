@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .models import Post
-from django.forms import ModelForm, TextInput, Textarea, DateTimeInput, Select, FileInput
+from django.forms import ModelForm, TextInput, Textarea, DateTimeInput, Select, FileInput, HiddenInput
 
 
 class ContactForm(forms.Form):
@@ -20,7 +20,7 @@ class ContactForm(forms.Form):
 class CreateArticleForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'image', 'content', 'url', 'author']
+        fields = ['title', 'image', 'content', 'url']#, 'created_at', 'author']
         widgets = {
             "title": TextInput(attrs={
                 "class": "form-control",
@@ -34,8 +34,10 @@ class CreateArticleForm(forms.ModelForm):
             "url": TextInput(attrs={
                 "class": "form-control",
                 "placeholder": "url"}),
-            "author": Select(attrs={
-                "class": "form-control"})
+            "created_at": HiddenInput(),
+            "author": HiddenInput(attrs={
+                'class': 'form-control',
+            }),
         }
 
 
