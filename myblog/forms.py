@@ -20,7 +20,7 @@ class ContactForm(forms.Form):
 class CreateArticleForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'image', 'content', 'url']#, 'created_at', 'author']
+        fields = ['title', 'image', 'content', 'url']
         widgets = {
             "title": TextInput(attrs={
                 "class": "form-control",
@@ -31,14 +31,7 @@ class CreateArticleForm(forms.ModelForm):
                 "class": "form-control",
                 'cols': 50, 'rows': 20,
                 "placeholder": "Текст статьи"}),
-            "url": TextInput(attrs={
-                "class": "form-control",
-                "placeholder": "url"}),
-            "created_at": HiddenInput(),
-            "author": HiddenInput(attrs={
-                'class': 'form-control',
-            }),
-        }
+            }
 
 
 class SigUpForm(forms.Form):

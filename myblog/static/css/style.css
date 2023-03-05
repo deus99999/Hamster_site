@@ -337,7 +337,7 @@ footer img:hover {
 	font-size: 1.4em;
 	font-family: "Segoe UI", sans-serif;
 	margin: 2%;
-	padding: 6%;
+	padding: 2%;
 }
 
 .post_detail a {
@@ -576,7 +576,9 @@ footer img:hover {
 	font-family: Comic Sans MS, sans-serif;
 }
 
-
+.no_my_article {
+    min-height: 200px;
+}
 
 @media (max-width: 1300px) {
 	

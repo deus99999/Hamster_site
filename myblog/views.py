@@ -12,6 +12,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.core.mail import send_mail, BadHeaderError
 from blog.settings import DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL
+import slugify
 
 
 class UserPostsView(View):
@@ -51,7 +52,6 @@ def create_article(request):
         form = CreateArticleForm(request.POST, request.FILES)
         if form.is_valid():
             form = form.save(commit=False)
-
             form.created_at = timezone.now()
             form.author = request.user
 

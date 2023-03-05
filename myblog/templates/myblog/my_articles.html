@@ -5,8 +5,12 @@
 {% block content %}
 	<div class="wrapper">
 		<div class="articles">
-			{% for post in page_obj %}
-			<div class="article">	
+            {% if page_obj %}
+                {% for post in page_obj %}
+
+                <div class="article">
+
+
 					<div class="content">
 						<div class="title">
 							<h4>{{ post.title|safe }}</h4>
@@ -16,9 +20,13 @@
 
 					</div>
 					<a href="{% url 'post_detail' slug=post.url %}">Читать далее</a>
-									
-			</div>
-			{% endfor %}
+                </div>
+                {% endfor %}
+            {% else %}
+            <div class="no_my_article">
+                <h2>Вы пока еще не добавили статью</h2>
+            </div>
+            {% endif %}
 		</div>
 	</div>
 	{% endblock content %}
