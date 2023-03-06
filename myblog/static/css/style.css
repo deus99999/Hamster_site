@@ -140,17 +140,26 @@ body button:hover {
 
 /* general style for site */
 .wrapper {
-	width: 85%;
 	margin-top: 3%;
-	margin-left: auto;
-	margin-right: auto;
+	padding: 1%;
+	
 	margin-bottom: 3%;
 }
 
 .wrapper .articles {
-	display: grid;
+	width: 100%;
+	margin: 0px 2%;
+margin-left: auto;
+	margin-right: auto;
+	/*display: grid;
 	grid-gap: 3%;
-	grid-template-columns: repeat(auto-fill, 420px);
+	grid-template-columns: repeat(3, minmax(380px, 420px));
+
+	justify-content: center;
+*/
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
 
 }
 
@@ -160,7 +169,9 @@ li{
 }
 
 .wrapper .articles .article {
-
+	margin: 1%;
+	min-width: 320px;
+	max-width: 480px;
 	border: 2px solid orange;
 	padding: 1%;
 	box-sizing: border-box;
@@ -580,25 +591,10 @@ footer img:hover {
     min-height: 200px;
 }
 
-@media (max-width: 1300px) {
-	
-	.wrapper {
-		width: 80%;
-	}
 
 
-	.wrapper .articles {
-		display: grid;
-		grid-gap: 1%;
-		grid-template-columns: repeat(2, 450px);
 
 
-	}
-
-	.wrapper .articles .article {
-		margin: 2% 2% 2% 5%;
-	}
-}
 
 
 
@@ -606,18 +602,14 @@ footer img:hover {
 @media (max-width: 1300px) {
 	
 	.wrapper {
-		width: 100%;
+		
 	}
 	.wrapper .articles {
-		width: 100%;
-		display: flex;
-		justify-content: space-around;
-		flex-wrap: wrap;
+		
 	}
 
 	.wrapper .articles .article {
-		flex-basis: 500px;
-		margin: 2% 0px;
+		
 	}
 
 	.add_article {
@@ -627,21 +619,18 @@ footer img:hover {
 
 
 
+}
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
 	
 
 	.wrapper .articles {
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
+		    
 
 
 	}
 
 	.wrapper .articles .article {
-		flex-basis: 500px;
 		margin: 2% 2% 2% 5%;
 	}
 }

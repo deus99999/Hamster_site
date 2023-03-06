@@ -7,12 +7,33 @@ from django.contrib.auth import login, authenticate
 from django.http import HttpResponseRedirect, HttpResponse
 from django.db.models import Q
 from django.views.generic.edit import FormView
-from django.views.generic import CreateView, DetailView
-from django.urls import reverse
+from django.views.generic import CreateView, DetailView, UpdateView
 from django.utils import timezone
 from django.core.mail import send_mail, BadHeaderError
 from blog.settings import DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL
-import slugify
+
+
+def post_edit(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if request.method == 'GET':
+        if request.user is not post.author:
+            return redirect('post', post_id=post_id)
+        form = CreateArticleForm(instance=post)
+
+    if request.method == 'POST':
+        form = CreateArticleForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+        return redirect('post', post_id=post_id)
+
+    return render(request, 'myblog/my_articles.html')
+
+
+def delete_post(request):
+    post = Post.objects.get()
+    post.delete()
+    return render(request, 'myblog/success_post_delete.html')
+
 
 
 class UserPostsView(View):
@@ -46,7 +67,6 @@ def contact_view(request):
 
 
 def create_article(request):
-
     error = ''
     if request.method == 'POST':
         form = CreateArticleForm(request.POST, request.FILES)
