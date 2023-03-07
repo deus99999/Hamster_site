@@ -16,10 +16,11 @@ from django.urls import reverse
 
 def edit_post(request, slug):
     post = Post.objects.get(url=slug)
-
     if request.method == 'POST':
         form = CreateArticleForm(instance=post, data=request.POST)
         if form.is_valid():
+            form.created_at = timezone.now()
+
             form.save()
             return HttpResponseRedirect(reverse('post_detail', args=[post.url]))
     else:
@@ -27,24 +28,6 @@ def edit_post(request, slug):
 
     context = {'forms': form, 'post': post}
     return render(request, 'myblog/edit_article.html', context)
-
-
-# def edit_post(request, slug):
-#     post = get_object_or_404(Post, url=slug)
-#
-#     form = CreateArticleForm(request.POST, instance=post)
-#
-#     if form.is_valid():
-#         form.save()
-#         form = form.save(commit=False)
-#         form.created_at = timezone.now()
-#         form.author = request.user
-#         return redirect('myblog/post_detail', id=post.id)
-#
-#     context = {'forms': form, 'post': post}
-#     return render(request, 'myblog/edit_article.html', context)
-
-
 
 
 class PostDetailView(View):
