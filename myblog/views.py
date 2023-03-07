@@ -7,33 +7,62 @@ from django.contrib.auth import login, authenticate
 from django.http import HttpResponseRedirect, HttpResponse
 from django.db.models import Q
 from django.views.generic.edit import FormView
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, View
 from django.utils import timezone
 from django.core.mail import send_mail, BadHeaderError
 from blog.settings import DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL
+from django.urls import reverse
 
 
-def post_edit(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    if request.method == 'GET':
-        if request.user is not post.author:
-            return redirect('post', post_id=post_id)
-        form = CreateArticleForm(instance=post)
+def edit_post(request, slug):
+    post = Post.objects.get(url=slug)
 
     if request.method == 'POST':
-        form = CreateArticleForm(request.POST, instance=post)
+        form = CreateArticleForm(instance=post, data=request.POST)
         if form.is_valid():
             form.save()
-        return redirect('post', post_id=post_id)
+            return HttpResponseRedirect(reverse('post_detail', args=[post.url]))
+    else:
+        form = CreateArticleForm(instance=post)
 
-    return render(request, 'myblog/my_articles.html')
+    context = {'forms': form, 'post': post}
+    return render(request, 'myblog/edit_article.html', context)
 
 
-def delete_post(request):
-    post = Post.objects.get()
-    post.delete()
-    return render(request, 'myblog/success_post_delete.html')
+# def edit_post(request, slug):
+#     post = get_object_or_404(Post, url=slug)
+#
+#     form = CreateArticleForm(request.POST, instance=post)
+#
+#     if form.is_valid():
+#         form.save()
+#         form = form.save(commit=False)
+#         form.created_at = timezone.now()
+#         form.author = request.user
+#         return redirect('myblog/post_detail', id=post.id)
+#
+#     context = {'forms': form, 'post': post}
+#     return render(request, 'myblog/edit_article.html', context)
 
+
+
+
+class PostDetailView(View):
+    def get(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Post, url=slug)
+        return render(request, 'myblog/post_detail.html', context={'post': post})
+
+
+class DeleteArticleView(View):
+    def get(self, request, slug):
+        post = Post.objects.get(url=slug)
+        context = {'post': post}
+        return render(request, 'myblog/delete_form.html', context)
+
+    def post(self, request, slug):
+        post = Post.objects.get(url=slug)
+        post.delete()
+        return redirect(reverse('my_articles'))
 
 
 class UserPostsView(View):
@@ -104,12 +133,6 @@ class MainView(View):
         return render(request, 'myblog/index.html', context={
             'page_obj': page_obj, 'num_visits':num_visits
         })
-
-
-class PostDetailView(View):
-    def get(self, request, slug, *args, **kwargs):
-        post = get_object_or_404(Post, url=slug)
-        return render(request, 'myblog/post_detail.html', context={'post': post})
 
 
 class SignUpView(View):

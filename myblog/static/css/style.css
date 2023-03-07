@@ -48,6 +48,13 @@ a:active {
 }
 
 
+a .delete {
+	background:  #6B00BE;
+}
+
+a .delete:hover {
+	background: red;
+}
 
 .left {
 	float: left;
@@ -170,8 +177,7 @@ li{
 
 .wrapper .articles .article {
 	margin: 1%;
-	min-width: 320px;
-	max-width: 480px;
+	width: 450px;
 	border: 2px solid orange;
 	padding: 1%;
 	box-sizing: border-box;
