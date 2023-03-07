@@ -1,0 +1,20 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %} Редактировать статью {% endblock %}
+
+{% block content%}
+<div class="add_article">
+
+	<form method="post" enctype="multipart/form-data" novalidate>
+		<p>{{ error }}</p>
+		{% for form in forms %}
+		{% csrf_token %}
+		{{ form }}<br>
+		{% endfor %}
+		<button name="submit">Сохранить</button>
+	</form>
+	
+</div>
+	
+
+{% endblock %}

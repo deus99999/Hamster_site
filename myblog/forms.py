@@ -33,7 +33,7 @@ class CreateArticleForm(forms.ModelForm):
                 "placeholder": "Текст статьи"}),
             "url": TextInput(attrs={
                 "class": "form-control",
-                "placeholder": "slug"}),
+                "placeholder": "url статьи (любое слово)"}),
             }
 
 

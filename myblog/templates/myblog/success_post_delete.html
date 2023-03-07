@@ -1,0 +1,41 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %}Статья удалена{% endblock %}
+
+{% block content %}
+	<div class="wrapper">
+            
+            <div class="no_my_article">
+                <h2>Статья "{{ post.title }}" успешно удалена!</h2>
+            </div>
+	</div>
+{% endblock content %}
+
+{% block pagination %}
+    <div class="pagin_div">
+        <nav class="pagination">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <a class="" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Предыдущая</a>
+            {% else %}
+                <li><a href="#" tabindex="-1">Предыдущая</a></li>
+            {% endif %}
+
+            {% for i in page_obj.paginator.page_range %}
+                {% if i == page_obj.number %}
+                    <li><a href="?page={{ i }}" class="sr-only">{{ i }}</a></li>
+                {% else %}
+                    <li><a href="?page={{ i }}" >{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a class="next" href="?page={{ page_obj.next_page_number }}">Следующая</a>
+        {% else %}
+            <li class="next"><a href="#">Следующая</a></li>
+        {% endif %}
+        </ul>
+    </nav>
+    </div>
+    <br>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %}Подтверждение удаления статьи{% endblock %}
+
+{% block content %}
+	<div class="registration_block">
+
+        <form action="{% url 'delete_article_form' slug=post.url %}" method="post" class="form-control">
+            {% csrf_token %}
+
+            <h3>Вы уверены, что хотите удалить статью <b>"{{ post.title }}"</b>?</h3>
+            <a href="{% url 'post_detail' slug=post.url %}">Отмена</a>
+            <button type="submit">Удалить</button>
+        </form>
+	</div>
+{% endblock content %}
+
