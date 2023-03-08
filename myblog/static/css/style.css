@@ -634,15 +634,14 @@ footer img:hover {
 
 
 
-}
-
 @media (max-width: 1200px) {
 	
 
-	.wrapper .articles {
-		    
-
-
+	.post_detail {
+		min-height: 320px;
+		border: none;
+		border-radius: 4%;
+		width: 80%;
 	}
 
 	.wrapper .articles .article {
@@ -654,8 +653,30 @@ footer img:hover {
 
 
 @media (max-width: 700px) {
-	
-	
+	.right {
+    	margin-top: 10px;
+    	float: left;
+    	font-size: 1.6em;
+   		margin-left: 40px;
+		}
+
+	.post_detail img {
+    	width: 340px;
+    	height: auto;
+    	border-radius: 4px 4px 4px 4px;
+    	margin: 2%;
+    	float: left;
+	}
+
+	.post_detail {
+		min-height: 320px;
+		border: none;
+		border-radius: 4%;
+		width: 100%;
+	   	padding: 0%;
+
+	}
+
 	.wrapper .articles {
 		width: 100%;
 		display: flex;

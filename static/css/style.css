@@ -17,13 +17,13 @@ body {
 	background-color: f7f7f7;
 	font-size: 1em;
 	font-family: "Segoe UI", sans-serif;
-	line-height: 135%;
 }
 
 h1 {
     -webkit-text-stroke: 3px white;
 	font-size: 540%;
 	font-family: Comic Sans MS, sans-serif;
+	padding-bottom: 5%;
 
 }
 
@@ -43,11 +43,18 @@ a:hover {
 }
 
 a:active {
-	color:  8ce4a6;
+	color:  #8ce4a6;
 
 }
 
 
+a .delete {
+	background:  #6B00BE;
+}
+
+a .delete:hover {
+	background: red;
+}
 
 .left {
 	float: left;
@@ -96,17 +103,17 @@ header {
 input[type=text].field{
 	border-radius: 5px;
 	border: 2px solid silver;
-	padding: 5px;
+	padding: 6px;
 	margin-left: 20px;
+	min-height: 15px;
+	font-size: 1.2em;
 }
 
 input[type=text].field:focus{
 	border: 2px solid #f5b8b;
 }
 
-}
-
-*menu {
+#menu {
 	flex-basis: 100%;
 	background: darksalmon;
 	color: #666;
@@ -115,6 +122,9 @@ input[type=text].field:focus{
 	margin-top: 100%;
 }
 
+body button:hover {
+	cursor: pointer;
+}
 
 #menuHrefs a {
 	padding: 3px;
@@ -122,9 +132,6 @@ input[type=text].field:focus{
 	font-family: Comic Sans MS, sans-serif;
 	margin-top: 20%;
 	margin-left: 2%;
-
-
-
 }
 
 #menuHrefs a:hover{
@@ -140,16 +147,26 @@ input[type=text].field:focus{
 
 /* general style for site */
 .wrapper {
-	width: 88%;
-	margin-top: 20px;
-	margin-left: auto;
-	margin-right: auto;
+	margin-top: 3%;
+	padding: 1%;
+	
+	margin-bottom: 3%;
 }
 
 .wrapper .articles {
-	display: grid;
+	width: 100%;
+	margin: 0px 2%;
+margin-left: auto;
+	margin-right: auto;
+	/*display: grid;
 	grid-gap: 3%;
-	grid-template-columns: repeat(3, 31.3%);
+	grid-template-columns: repeat(3, minmax(380px, 420px));
+
+	justify-content: center;
+*/
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
 
 }
 
@@ -159,13 +176,13 @@ li{
 }
 
 .wrapper .articles .article {
-
+	margin: 1%;
+	width: 450px;
 	border: 2px solid orange;
 	padding: 1%;
 	box-sizing: border-box;
 	border-radius: 4%;
 	background-color: #F8F7F7;
-	margin: 1%;
 	height: auto;
 }
 
@@ -181,12 +198,12 @@ li{
 .wrapper .articles .article p {
 	margin-left: 5%;
 	width: 90%;
-	text-indent: 1em;
+	text-indent: 1.5em;
 	padding-top: 6px;
-	font-family: Verdana;
+	font-family: Verdana fantasy;
 	line-height: 110%;
-	font-size: 18px;
-	min-height: 50px;
+	font-size: 1.3em;
+	min-height: 90px;
 }
 
 .wrapper .articles .article .content .title {
@@ -206,10 +223,12 @@ li{
 	margin-bottom: 3%;
 	border-radius: 4px;
 	float: left;
+	border: 1px solid black;
+	font-size: 1.1em;
 }
 
 
-#wrapper #articles .article a:hover {
+.wrapper .articles .article a:hover {
 	background-color: #F98E4D;
 	color: black;
 }
@@ -224,7 +243,6 @@ li{
 	padding: 0;
 	border-bottom: 2px solid silver;
 	border-top: 2px solid silver;
-	margin: 0px 0px;
     /*background-image: url({% static 'img/bg.jpg' %}); */
 	background-image: url(bg.jpg); 
 
@@ -235,39 +253,23 @@ li{
 
 #main_soc_block_in {
 	text-align: center;
-	padding: 5%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 
-.article a {
-	padding: 5px;
-	background-color: #FAC759;
-	margin-left: 5%;
-	border-radius: 4px;
-	float: left;
-	margin-top: 15px;
-}
 
-.article a:hover {
-	border: 1px solid black;
-	color: black;
-}
 
 /* footers style */
 footer {
 	padding: 1%;
-	border-top: 2px, solid silver;
-	margin-top: 10px;
-	margin-top: 3%
+	border-top: 2px solid silver;
 }
 
 footer img {
 	width: 10%;
 	float: left;
 	margin-right: 20px;
-	size: 5%;
 }
 
 footer img:hover {
@@ -280,6 +282,12 @@ footer img:hover {
 	margin-bottom: 10px;
 	height: 10%;
 
+}
+
+#page-wrap p {
+	font-family: Verdana fantasy;
+	font-size: 1.3em;
+	
 }
 
 .write_article {
@@ -299,49 +307,25 @@ footer img:hover {
 	display: block;
 }
 
-@media (max-width: 1024px) {
-	#main_soc_block_in h1 {
-    	font-size: 5em;
-		line-height: 70%;
-		}
-
-	.wrapper .articles {
-	display: flex;
-	flex-wrap: wrap;
-	}
-}
-
-@media (max-width: 700px) {
-	
-
-	#main_soc_block_in h1 {
-    	font-size: 5em;
-    	float: right;
-    	hyphens: auto;
-		line-height: 70%;
-	}
-
-	.wrapper .articles {
-	display: flex;
-	flex-wrap: wrap;
-	}
-}
 
 
 .search_button {
     width: 100px;
-    border: 1px solid black;
+    border: 2px solid black;
     background: orange;
     border-radius: 6%;
     cursor: pointer;
 	font-family: Comic Sans MS, sans-serif;
 	font-size: 1.2em;
-	line-height: 20px;
+	min-height: 15px;
+	padding: 2px;
+
 }
 
 
 
 .post_detail {
+	min-height: 320px;
 	border: 3px solid orange;
 	border-radius: 4%;
 	width: 80%;
@@ -349,8 +333,7 @@ footer img:hover {
 	margin-right: auto;
 	margin-top: 3%;
 	margin-bottom: 3%;
-	min-height: auto;
-	padding: 2%;
+	padding: 4%;
 }
 
 .post_detail h4 {
@@ -364,12 +347,14 @@ footer img:hover {
 	height: 250px;
 	border-radius: 4px 4px 4px 4px;
 	margin: 4%;
+	float: left;
 }
 
 .post_detail p {
 	font-size: 1.4em;
 	font-family: "Segoe UI", sans-serif;
 	margin: 2%;
+	padding: 2%;
 }
 
 .post_detail a {
@@ -378,9 +363,346 @@ footer img:hover {
 	margin-left: 5%;
 	border-radius: 4px;
 	float: left;
+	margin-bottom: 5%;
+	font-weight: bold;
+	border: 2px solid #FAC759;
+	border: 2px solid black;
+
 }
 
 .post_detail a:hover {
-	border: 1px solid black;
 	color: black;
+		background-color: #F98E4D;
+
+}
+
+.registration_block {
+	border: 3px solid orange;
+	border-radius: 4%;
+	width: 50%;
+	margin: 3% auto;
+	padding: 4%;
+}
+
+
+
+.registration_block h3 {
+	text-align: center;
+	font-size: 1.8em;
+	margin: 0px 4% 4%;
+}
+
+.registration_block form {
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	font-size: 1.4em;
+}
+
+.registration_block	.form-control {
+	margin: 2% auto;
+	padding: 1.2%;
+	border-radius: 3%;
+	font-size: 1.1em;
+}
+
+
+.registration_block label {
+	font-size: 1.3em;
+	padding-right: 20px;
+}
+
+.registration_block button {
+	font-size: 1.3em;
+	border-radius: 4%;
+	padding: 1.4%;
+	background: orange;
+	margin-top: 14px;
+	border: 2px solid black;
+}
+
+.registration_block button:hover {
+	border: 2px solid black;
+	color: orange;
+	background: black;
+}
+
+.registration_block .field {
+	clear:both;
+	text-align:right;
+}
+
+.registration_block .password_error {
+	width: 100%;
+	text-align: center;
+	font-size: 2em;
+	color: red;
+	border-radius: 4%;
+	margin-bottom: 3%;
+	font-family: Comic Sans MS, sans-serif;
+
+}
+
+.signin_login {
+	margin-left: 4%;
+	font-family: Comic Sans MS, sans-serif;
+	font-size: 1.4em;
+}
+
+
+
+.search {
+	
+	padding: 4%;
+	min-height: 400px;
+}
+
+.search p {
+	margin-top: 1%;
+	font-size: 1.3em;
+	font-family: Comic Sans MS, sans-serif;
+}
+
+.search nav li {
+	display: inline;
+	font-size: 1.3em;
+}
+
+.search_text {
+	margin: 2%;
+}
+
+.search_text a {
+	color: darkblue;
+}
+
+
+
+.pagin_div {
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto; 
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+
+
+
+.pagination nav {
+	display: flex;
+    justify-content: center;
+}
+
+
+
+.pagination {
+	display: flex;
+    column-gap: 5px;
+}
+
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1.2em;
+
+}
+
+
+.pagination a:hover {
+    background-color: #e9e9e9;
+}
+
+.pagination .sr-only {
+	background: orange;
+}
+
+.pagination .sr-only:hover {
+	background: orange;
+}
+
+
+
+
+.add_article {
+	width: 80%;
+	min-height: 450px;
+	border: 3px solid orange;
+	border-radius: 2%;
+	margin: 3% auto;
+	padding: 4%;
+}
+
+.add_article button {
+	font-size: 1.3em;
+	border-radius: 4%;
+	padding: 1.4%;
+	background: orange;
+	margin-top: 14px;
+	border: 2px solid black;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.add_article button:hover {
+	border: 2px solid orange;
+	color: orange;
+	background: black;
+
+}
+
+.add_article form {
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	font-size: 1.4em;
+}
+
+.add_article form textarea {
+	width: 70%;
+    	height: 50%;
+	
+}
+
+.add_article .form-control {
+	margin: 2% auto;
+	padding: 1.2%;
+	border-radius: 3%;
+	font-size: 1.1em;
+	border: 2px solid black;
+	min-width: 60%; 
+}
+
+.add_article p {
+	margin: 0px 0px;
+	font-size: 1.3em;
+	font-family: Comic Sans MS, sans-serif;
+}
+
+
+
+.about {
+	min-height: 350px;
+}
+
+.about p {
+	margin: 0px 0px;
+	padding: 2% 5%;
+	font-size: 1.4em;
+	font-family: Comic Sans MS, sans-serif;
+}
+
+.no_my_article {
+    min-height: 200px;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 1300px) {
+	.add_article form textarea {
+		width: 100%;
+	}
+
+	.wrapper {
+		
+	}
+	.wrapper .articles {
+		
+	}
+
+	.wrapper .articles .article {
+		
+	}
+
+	.add_article {
+		border: none;
+	}
+}
+
+
+
+}
+
+@media (max-width: 1200px) {
+	
+	
+
+	.wrapper .articles {
+		    
+
+
+	}
+
+	.post_detail {
+		min-height: 320px;
+		border: none;
+		border-radius: 4%;
+		width: 80%;
+	}
+
+	.wrapper .articles .article {
+		margin: 2% 2% 2% 5%;
+	}
+}
+
+
+
+
+@media (max-width: 700px) {
+	
+	
+	.wrapper .articles {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+
+
+	}
+
+	.wrapper .articles .article {
+		flex-basis: 500px;
+		margin: 2% 2% 2% 5%;
+	}
+
+	#main_soc_block_in h1 {
+    	font-size: 5em;
+		line-height: 70%;
+		}
+
+	.registration_block {
+		width: 90%;
+		margin: 10% 4%;
+		padding: 2%;
+		border: none;
+	}
+
+	.registration_block	.form-control {
+		font-size: 0.9em;
+	}
+
+	.registration_block label {
+		font-size: 1em;
+	}
+
+	.registration_block button {
+		font-size: 1em;
+	}
+
+	.registration_block form {
+    	width: 90%;
+	}
 }
