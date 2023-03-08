@@ -29,7 +29,7 @@ class CreateArticleForm(forms.ModelForm):
                 "class": "form-control"}),
             "content": Textarea(attrs={
                 "class": "form-control",
-                'cols': 50, 'rows': 20,
+
                 "placeholder": "Текст статьи"}),
             "url": TextInput(attrs={
                 "class": "form-control",

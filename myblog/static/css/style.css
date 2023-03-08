@@ -565,6 +565,12 @@ footer img:hover {
 	font-size: 1.4em;
 }
 
+.add_article form textarea {
+	width: 70%;
+    	height: 50%;
+	
+}
+
 .add_article .form-control {
 	margin: 2% auto;
 	padding: 1.2%;
@@ -606,7 +612,10 @@ footer img:hover {
 
 
 @media (max-width: 1300px) {
-	
+	.add_article form textarea {
+		width: 100%;
+	}
+
 	.wrapper {
 		
 	}
@@ -646,7 +655,7 @@ footer img:hover {
 
 @media (max-width: 700px) {
 	
-
+	
 	.wrapper .articles {
 		width: 100%;
 		display: flex;
